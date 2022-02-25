@@ -5,7 +5,7 @@ const Navbar = () =>{
 
   const Options = () =>{
     return routes.map((route)=>{
-      return <a href={route.path}>{route.Name}</a>
+      return <a key={route.Name} href={route.path}>{route.Name}</a>
     })
   }
 
