@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { routes } from "../Routes/Routes";
 
 const Navbar = () =>{
@@ -6,7 +7,7 @@ const Navbar = () =>{
   const Options = () => {
     return routes.map((route)=>{
 
-      return <a key={route.Name} href={route.path}>{route.Name}</a>
+      return <Link key={route.Name} to={route.path}>{route.Name}</Link>
     })
   }
 

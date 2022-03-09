@@ -12,7 +12,6 @@ const Pokemons = () => {
   const getPokemons = async () => {
     try {
       let res = await axios.get("/api/pokemons");
-      console.log(res);
       setPokemons(res.data);
     } catch (err) {
       console.log(err);
