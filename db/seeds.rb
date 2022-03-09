@@ -5,3 +5,13 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Pokemon.destroy_all
+# Faker::Games::Pokemon.name #=> "Pikachu"
+
+6.times do 
+  Pokemon.create(name:Faker::Games::Pokemon.name, location:Faker::Games::Pokemon.location)
+end
+
+p "========================HOW MANY SEEDS========================"
+p "# of Pokemon = #{Pokemon.count}"
