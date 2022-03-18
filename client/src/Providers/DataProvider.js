@@ -34,7 +34,8 @@ const DataProvider = (props) => {
     getPokemons,
     pokemons,
     loading,
-    addPokemon
+    addPokemon,
+    setPokemons
   };
 
   return (

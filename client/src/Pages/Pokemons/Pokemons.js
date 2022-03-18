@@ -1,9 +1,10 @@
 import axios from "axios";
 import React, { useEffect, useState }  from "react";
+import { useNavigate } from "react-router-dom";
 import RenderPokemons from "./RenderPokemons";
 
 const Pokemons = () =>{
-  
+  const nav = useNavigate();
   const [pokemons, setPokemons] = useState([]);
 
   useEffect(()=>{
@@ -33,6 +34,7 @@ const Pokemons = () =>{
   return(
     <>
     <h1>Pokemons</h1>
+    <button onClick={()=>{nav('/pokemons/new')}}>Add New Pokemon</button>
     <RenderPokemons pokemons={pokemons} deletePoke={deletePoke}/>
     </>
   )
