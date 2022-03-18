@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 
 
-const RenderPokemons = (pokemons) =>{
+const RenderPokemons = ({pokemons, deletePoke}) =>{
 
     return pokemons.map((pokemon)=>{
       return(
@@ -9,6 +9,8 @@ const RenderPokemons = (pokemons) =>{
       <h1>{pokemon.name}</h1>
       <p>{pokemon.location}</p>
       <Link to={`/pokemons/${pokemon.id}`}>To Pokemon</Link>
+      <Link to={`/pokemons/${pokemon.id}/edit`}>Edit Pokemon</Link>
+      <button onClick={()=>{deletePoke(pokemon.id)}} >Delete</button>
       </div>
       )})
 }

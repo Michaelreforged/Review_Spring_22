@@ -20,10 +20,20 @@ const Pokemons = () =>{
     }
   }
 
+  const deletePoke = async (id)=>{
+    try{
+      await axios.delete(`/api/pokemons/${id}`)
+      const updatedPoke = pokemons.filter((p)=>(p.id !== id))
+      setPokemons(updatedPoke)
+    }catch(err){
+      console.log(err)
+    }
+  }
+
   return(
     <>
     <h1>Pokemons</h1>
-    {RenderPokemons(pokemons)}
+    <RenderPokemons pokemons={pokemons} deletePoke={deletePoke}/>
     </>
   )
 
