@@ -1,11 +1,16 @@
 import axios from "axios";
-import React, { useEffect, useState }  from "react";
+import React, { useContext, useEffect, useState, }  from "react";
 import RenderPokemons from "./RenderPokemons";
+import { useNavigate } from "react-router-dom";
+import { DataContext } from "../../Providers/DataProvider";
+
 
 const Pokemons = () =>{
+  const { updatedPoke } = useContext(DataContext)
+
   
   const [pokemons, setPokemons] = useState([]);
-
+  const nav = useNavigate()
   useEffect(()=>{
     getPokemons()
   },[])
@@ -20,10 +25,22 @@ const Pokemons = () =>{
     }
   }
 
+  const deletePoke = async (id) =>{
+    try{
+      await axios.delete(`/api/pokemons/${id}`)
+      const updatePoke = pokemons.filter((p)=>(p.id !==id))
+      setPokemons(updatePoke)
+      updatedPoke()
+    }catch(err){
+      console.log(err)
+    }
+  }
+
   return(
     <>
     <h1>Pokemons</h1>
-    {RenderPokemons(pokemons)}
+    <button onClick={()=>{nav(`/pokemons/new`)}}>Add New Pokemon</button>
+    <RenderPokemons pokemons={pokemons} deletePoke={deletePoke}/>
     </>
   )
 

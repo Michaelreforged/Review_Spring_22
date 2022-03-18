@@ -6,11 +6,13 @@ export const DataContext = React.createContext();
 const DataProvider = (props) =>{
   const [pokemons, setPokemons] = useState([]);
   const [loading, setLoading] = useState(null)
+  const [updated, setUpdated] = useState(false)
 
   useEffect(()=>{
     console.log('mounted')
     getPokemons()
-  },[])
+    setUpdated(false)
+  },[updated])
 
   const getPokemons = async () => {
     setLoading(true)
@@ -27,10 +29,23 @@ const DataProvider = (props) =>{
       }
   }
 
+  const addPokemon = (poke) =>{
+    console.log("added new Pokemon")
+    setPokemons([...pokemons, poke])
+    setUpdated(true)
+  }
+  const updatedPoke = () =>{
+    console.log("Update Pokemon")
+    setUpdated(true)
+  }
+
   const providerItems = {
     getPokemons,
     pokemons,
     loading,
+    addPokemon,
+    updatedPoke,
+    setPokemons,
   }
 
   return(
