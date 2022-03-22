@@ -5,9 +5,9 @@ import { useNavigate } from "react-router-dom";
 import { DataContext } from "../../Providers/DataProvider";
 
 
-const Pokemons = () =>{
+const Pokemons = (props) =>{
   const { updatedPoke } = useContext(DataContext)
-
+  console.log(props)
   
   const [pokemons, setPokemons] = useState([]);
   const nav = useNavigate()

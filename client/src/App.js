@@ -4,6 +4,7 @@ import Navbar from "./Components/NavBar";
 import About from "./Pages/About";
 import Functions from "./Pages/Functions";
 import Home from "./Pages/Home";
+import NoMatch from "./Pages/NoMatch";
 import { PokemonRoutes, PokemonRoutes2 } from "./Routes/PokemonRoutes";
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
       <Route path='/pokemons/*' element={<PokemonRoutes/>}/>
       <Route path='/pokemons2/*' element={<PokemonRoutes2/>}/>
       <Route path='/about' element={<About/>}/>
+      <Route path='/*' element={<NoMatch/>}/>
     </Routes>
     </>
   );

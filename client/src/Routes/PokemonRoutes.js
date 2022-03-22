@@ -1,5 +1,6 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
+import NoMatch from "../Pages/NoMatch";
 import Pokemon from "../Pages/Pokemons/Pokemon";
 import PokeForm from "../Pages/Pokemons/PokemonForms";
 import Pokemons from "../Pages/Pokemons/Pokemons";
@@ -12,6 +13,7 @@ export const PokemonRoutes = () =>{
       <Route path='/:id' element={<Pokemon/>}/>
       <Route path='/:id/edit' element={<PokeForm/>}/>
       <Route path='/new' element={<PokeForm/>}/>
+      <Route path='/*' element={<NoMatch/>}/>
     </Routes>
   )
 }
@@ -20,6 +22,7 @@ export const PokemonRoutes2 = () =>{
     <Routes>
       <Route path='/' element={<Pokemons2/>}/>
       <Route path='/:id' element={<Pokemon/>}/>
+      <Route path='/*' element={<NoMatch/>}/>
     </Routes>
   )
 }
