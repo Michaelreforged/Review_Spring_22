@@ -16,11 +16,18 @@ const Pokemon = () => {
       setPokemon(p[0]);
     }
   }, [loading]);
-
+  
   const render = () => {
+    if (isNaN(params.id) || pokemon === undefined) {
+      return (
+        <>
+          <h1>Invalid ID</h1>
+        </>
+      );
+    }
     return (
       <>
-        <h1>{pokemon.name}</h1>
+        <h1>{pokemon?pokemon.name:""}</h1>
       </>
     );
   };

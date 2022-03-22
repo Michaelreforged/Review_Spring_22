@@ -8,6 +8,7 @@ const PokeForm = (props) => {
   const params = useParams();
   const [name, setName] = useState("");
   const [location, setLocation] = useState("");
+  const [exist, setExist] = useState(true);
   const { addPokemon, updatedPoke } = useContext(DataContext);
 
   const checkPoke = async () => {
@@ -18,6 +19,7 @@ const PokeForm = (props) => {
         setLocation(res.data.location);
       } catch (err) {
         console.log(err)
+        setExist(false)
       }
     }
   };
@@ -44,9 +46,9 @@ const PokeForm = (props) => {
       } catch (err) {}
     }
   };
-  console.log(name)
+
   const renderForm = () => {
-    if (isNaN(params.id) && params['*'] !=='new') {
+    if ((isNaN(params.id) && params['*'] !=='new') || !exist) {
       return (
         <>
           <h1>Invalid ID</h1>
