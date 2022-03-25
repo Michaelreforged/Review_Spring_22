@@ -13,9 +13,11 @@ class Api::PokemonsController < ApplicationController
 
   def create
     pokemon = Pokemon.new(poke_params)
-    if(pokemon.save)
+    if(pokemon.validate)
+      pokemon.save
       render json: pokemon
     else
+      p pokemon.errors.messages
       render json: {errors: pokemon.errors.full_messages}, status: 422
     end
   end

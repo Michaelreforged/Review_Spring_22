@@ -1,3 +1,4 @@
 class Pokemon < ApplicationRecord
-  validates_presence_of :name
+  validates :name, presence: {message:"Name is required"}
+  validates :location, length: {minimum: 4, message:"Minimum char is 4"}
 end

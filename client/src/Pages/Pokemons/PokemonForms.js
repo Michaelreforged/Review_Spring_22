@@ -43,7 +43,9 @@ const PokeForm = (props) => {
         await axios.post("/api/pokemons", { name, location });
         addPokemon({ name, location });
         nav("/pokemons/");
-      } catch (err) {}
+      } catch (err) {
+        console.log(err.response.data.errors)
+      }
     }
   };
 
