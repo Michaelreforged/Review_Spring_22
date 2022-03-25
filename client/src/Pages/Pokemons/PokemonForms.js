@@ -9,6 +9,8 @@ const PokeForm = (props) => {
   const [name, setName] = useState("")
   const [location, setLocation] = useState("")
   const {addPokemon,updatedPoke} = useContext(DataContext)
+  const [error, setError] = useState(false)
+  const [errorMsg, setErrorMsg] = useState(false)
 
   const checkPoke = async () =>{
     if( params.id){
@@ -42,7 +44,9 @@ const PokeForm = (props) => {
         addPokemon({name,location})
         nav('/pokemons/')
       } catch (err) {
-        
+        console.log(err.response.data.errors)
+        setError(true)
+        setErrorMsg(err.response.data.errors.toString())
       }
     }
   }
@@ -60,11 +64,14 @@ const PokeForm = (props) => {
       <p>Location</p>
       <input
       value={location}
+      
       placeholder={location}
       onChange={(e)=>{setLocation(e.target.value)}}
       />
       <br/>
       <button>{params.id ? "Update":"Add"}</button>
+
+      {error ? <p>{errorMsg}</p>:<></>}
     </form>
   )
 

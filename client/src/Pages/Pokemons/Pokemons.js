@@ -3,6 +3,7 @@ import React, { useContext, useEffect, useState, }  from "react";
 import RenderPokemons from "./RenderPokemons";
 import { useNavigate } from "react-router-dom";
 import { DataContext } from "../../Providers/DataProvider";
+import { RenderDiv } from "../../SyledComp/Divs";
 
 
 const Pokemons = () =>{
@@ -37,11 +38,13 @@ const Pokemons = () =>{
   }
 
   return(
-    <>
+    <div style={{margin:"10px"}}>
     <h1>Pokemons</h1>
     <button onClick={()=>{nav(`/pokemons/new`)}}>Add New Pokemon</button>
+    <RenderDiv>
     <RenderPokemons pokemons={pokemons} deletePoke={deletePoke}/>
-    </>
+    </RenderDiv>
+    </div>
   )
 
 }
