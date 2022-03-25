@@ -9,7 +9,6 @@ const DataProvider = (props) =>{
   const [updated, setUpdated] = useState(false)
 
   useEffect(()=>{
-    console.log('mounted')
     getPokemons()
     setUpdated(false)
   },[updated])
@@ -19,7 +18,6 @@ const DataProvider = (props) =>{
       
       try {
         let res = await axios.get('/api/pokemons')
-        console.log(res)
         setPokemons(res.data)
       } catch (err) {
         console.log(err)

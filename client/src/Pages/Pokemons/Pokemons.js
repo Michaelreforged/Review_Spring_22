@@ -7,7 +7,6 @@ import { DataContext } from "../../Providers/DataProvider";
 
 const Pokemons = (props) =>{
   const { updatedPoke } = useContext(DataContext)
-  console.log(props)
   
   const [pokemons, setPokemons] = useState([]);
   const nav = useNavigate()
@@ -18,7 +17,6 @@ const Pokemons = (props) =>{
   const getPokemons = async () =>{
     try {
       let res = await axios.get('/api/pokemons')
-      console.log(res)
       setPokemons(res.data)
     } catch (err) {
       console.log(err)
