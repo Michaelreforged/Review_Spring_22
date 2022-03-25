@@ -21,7 +21,9 @@ display: flex;
 flex-wrap: wrap;
 `
 
-export const styledLink = styled(Link)`
-textdecoration: none;
-
+export const StyledLink = styled(Link)`
+text-decoration: none;
+`
+export const StyledLinkWithPadding = styled(StyledLink)`
+padding: 10px;
 `

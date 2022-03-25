@@ -1,13 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { routes } from "../Routes/Routes";
+import { StyledLinkWithPadding } from "../SyledComp/Divs";
 
 const Navbar = () =>{
 
   const Options = () => {
     return routes.map((route)=>{
-
-      return <Link style={{padding:"10px",textDecoration:"none",}} key={route.Name} to={route.path}>{route.Name}</Link>
+      return <StyledLinkWithPadding key={route.Name} to={route.path}>{route.Name}</StyledLinkWithPadding>
     })
   }
 

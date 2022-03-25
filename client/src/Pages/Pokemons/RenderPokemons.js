@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import { Pokediv, styledLink } from "../../SyledComp/Divs"
+import { Pokediv, StyledLink } from "../../SyledComp/Divs"
 
 
 const RenderPokemons = ({pokemons,deletePoke}) =>{
@@ -12,8 +12,8 @@ const RenderPokemons = ({pokemons,deletePoke}) =>{
           <p>{pokemon.location}</p>
         </div>
         <div>
-          <styledLink style={{textDecoration:"none"}} to={`/pokemons/${pokemon.id}`}>To Pokemon</styledLink>
-          <styledLink style={{textDecoration:"none"}} to={`/pokemons/${pokemon.id}/edit`}>Update Pokemon</styledLink>
+          <StyledLink to={`/pokemons/${pokemon.id}`}>To Pokemon</StyledLink>
+          <StyledLink to={`/pokemons/${pokemon.id}/edit`}>Update Pokemon</StyledLink>
           <button onClick={()=>{deletePoke(pokemon.id)}}>Delete Pokemon</button>
         </div>
       </Pokediv>
