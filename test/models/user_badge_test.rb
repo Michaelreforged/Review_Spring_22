@@ -1,6 +1,6 @@
 require "test_helper"
 
-class Api::BadgesControllerTest < ActionDispatch::IntegrationTest
+class UserBadgeTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

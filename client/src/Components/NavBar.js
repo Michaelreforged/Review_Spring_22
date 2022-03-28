@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { routes } from "../Routes/Routes";
 import { StyledLinkWithPadding } from "../SyledComp/Divs";
 
