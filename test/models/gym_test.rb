@@ -1,6 +1,6 @@
 require "test_helper"
 
-class Api::TrainersControllerTest < ActionDispatch::IntegrationTest
+class GymTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
