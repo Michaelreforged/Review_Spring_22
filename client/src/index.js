@@ -5,12 +5,18 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import DataProvider from './Providers/DataProvider';
+import {initMiddleware} from "devise-axios"
+import AuthProvider from './Providers/AuthProvider';
+
+initMiddleware()
 
 ReactDOM.render(
   <BrowserRouter>
+  <AuthProvider>
     <DataProvider>
       <App />
     </DataProvider>
+  </AuthProvider>
   </BrowserRouter>,
   document.getElementById('root')
 );
