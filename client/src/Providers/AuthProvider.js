@@ -12,7 +12,6 @@ const AuthProvider = (props) =>{
   const handleRegister = async (user) =>{
     try {
       let res = await axios.post('/api/auth',user)
-      console.log(res.data.data)
       setUser(res.data.data)
       nav('/trainers')
     } catch (err) {

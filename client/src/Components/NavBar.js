@@ -35,7 +35,7 @@ export const TrainerNavbar = () =>{
 
   const rightNav = () =>{
     if(user){
-      <button onClick={()=>handleLogout()}>LogOut</button>
+      return(<button onClick={()=>handleLogout()}>LogOut</button>)
     }
     return(
       <>
