@@ -8,8 +8,10 @@ Rails.application.routes.draw do
     put '/pokemons/:id', to: 'pokemons#update'
     patch '/pokemons/:id', to: 'pokemons#update'
 
-    resources :user_badges do 
-      resources :badges 
+    get '/gym', to: 'gyms#gym_badges'
+    
+    resources :badges do 
+      resources :user_badges 
     end
 
   end

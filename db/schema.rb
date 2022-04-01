@@ -10,12 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_28_213225) do
+ActiveRecord::Schema.define(version: 2022_03_31_203048) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "badges", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "gym_id", null: false
+    t.index ["gym_id"], name: "index_badges_on_gym_id"
+  end
+
+  create_table "gyms", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -67,6 +75,7 @@ ActiveRecord::Schema.define(version: 2022_03_28_213225) do
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end
 
+  add_foreign_key "badges", "gyms"
   add_foreign_key "user_badges", "badges"
   add_foreign_key "user_badges", "users"
 end
