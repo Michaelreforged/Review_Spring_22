@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     delete '/pokemons/:id', to: 'pokemons#destroy'
     put '/pokemons/:id', to: 'pokemons#update'
     patch '/pokemons/:id', to: 'pokemons#update'
-
+    get "/pagepokemon", to: 'pokemons#pagePokemon'
     get "/gyms", to: "gyms#with_badge"
 
     resources :badges do

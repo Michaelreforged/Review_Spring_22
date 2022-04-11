@@ -11,7 +11,7 @@ Pokemon.destroy_all
 Gym.destroy_all
 # User.destroy_all
 
-6.times do 
+600.times do 
   Pokemon.create(name:Faker::Games::Pokemon.name, location: Faker::Games::Pokemon.location)
 end
 
