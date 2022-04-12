@@ -10,4 +10,6 @@ class User < ActiveRecord::Base
   
   has_many :user_badges, dependent: :destroy
   has_many :badges, through: :user_badges
+  has_one :party
+  has_many :pokemons, through: :party
 end

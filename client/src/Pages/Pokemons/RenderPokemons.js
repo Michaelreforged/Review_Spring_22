@@ -7,8 +7,8 @@ const RenderPokemons = ({pokemons,deletePoke}) =>{
     return pokemons.map((pokemon)=>{
       return(
       <Pokediv key={pokemon.id}>
-        <div>
-          <h1>{pokemon.name}</h1>
+        <div style={{textAlign:"center"}}>
+          <h1>{pokemon.species}</h1>
           <p>{pokemon.location}</p>
         </div>
         <div>
