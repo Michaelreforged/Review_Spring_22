@@ -2,9 +2,9 @@ import React, { useContext, useState } from "react";
 import { AuthContext } from "../Providers/AuthProvider";
 
 const Register = () =>{
-  const [email, setEmail] = useState("") 
-  const [password, setPassword] = useState("") 
-  const [passwordConfrim, setPasswordConfirm] = useState("") 
+  const [email, setEmail] = useState("test@test.com") 
+  const [password, setPassword] = useState("123456") 
+  const [passwordConfrim, setPasswordConfirm] = useState("123456") 
   const {handleRegister} = useContext(AuthContext)
 
   const handleSubmit=(e) =>{
