@@ -11,24 +11,9 @@ Pokemon.destroy_all
 Gym.destroy_all
 # User.destroy_all
 
-600.times do 
+60.times do 
   poke = Faker::Games::Pokemon.name
   Pokemon.create(name:poke, species:poke, location: Faker::Games::Pokemon.location)
-end
-
-@gyms = [
-  "Pewter",
-  "Curelean"
-] 
-
-@badge = [
-  "Boulder",
-  "Cascade"
-]
-
-for g in 0..1 do 
-  gym = Gym.create(name:@gyms[g])
-  gym.create_badge(name:@badge[g])
 end
 
 @gyms = [
@@ -57,8 +42,12 @@ for g in 0..7 do
   gym.create_badge(name:@gyms_badges[g], gym_id:gym.id)
 end 
 
+User.create(name:"Red",email:"red@pallet.com",password:"Pikachu")
+User.create(name:"Blue",email:"blue@pallet.com",password:"Blastoise")
+User.create(name:"Green",email:"ash@pallet.com",password:"Charizard")
 
 p "====================================="
-p "# of pokemon = #{Pokemon.count}"
-p "# of gym = #{Gym.count}"
-p "# of Badge = #{Badge.count}"
+p "# of Pokemon = #{Pokemon.count}"
+p "# of Gyms = #{Gym.count}"
+p "# of Badges = #{Badge.count}"
+p "# of Users = #{User.count}"

@@ -12,4 +12,15 @@ class User < ActiveRecord::Base
   has_many :badges, through: :user_badges
   has_one :party
   has_many :pokemons, through: :party
+
+#   SELECT u.name, u.id
+# FROM users as u
+# where u.id != 1 
+
+  def filtered(id)
+    select("u.name, u.id")
+    .from("users as u")
+    .where("u.id != ?",id)
+  end
+
 end
