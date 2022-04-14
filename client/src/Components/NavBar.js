@@ -35,7 +35,7 @@ export const TrainerNavbar = () =>{
 
   const rightNav = () =>{
     if(user){
-      return(<StyledLinkWithPadding to="/login" onClick={()=>handleLogout()}>LogOut</StyledLinkWithPadding>)
+      return(<StyledLinkWithPadding to="/login" onClick={()=>handleLogout()}>Logout</StyledLinkWithPadding>)
     }
     return(
       <>

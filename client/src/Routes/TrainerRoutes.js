@@ -9,12 +9,13 @@ import Trainers from "../Pages/Trainers/Trainers";
 
 export const TrainerRoutes = () =>{
   return(
-    <ProtectedRoute>
-      <Route path='/' element={<Trainers/>}/>
-      <Route path='/gym' element={<Gyms/>}/>
-      <Route path='/badge' element={<Badges/>}/>
-
-      <Route path='/*' element={<NoMatch/>}/>
-    </ProtectedRoute>
+    <Routes>
+      <Route element={<ProtectedRoute/>}>
+        <Route path='/' element={<Trainers/>}/>
+        <Route path='/gym' element={<Gyms/>}/>
+        <Route path='/badge' element={<Badges/>}/>
+        <Route path='/*' element={<NoMatch/>}/>
+      </Route>
+    </Routes>
   )
 }

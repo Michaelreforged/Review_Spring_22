@@ -11,9 +11,9 @@ const Trainers = ()=>{
   const getTrainers = async () => {
     try {
       let res = await axios.get("/api/trainers")
-      console.log(res)
+      setTrainers(res.data)
     } catch (err) {
-      
+      console.log("errors getting trainers")
     }
   }
 
