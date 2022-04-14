@@ -13,6 +13,7 @@ export const routes = [
 export const trainerRoutes = [
   {path: '/', Name:'Home'},
   {path: '/trainers', Name:'Trainer'},
+  {path: '/trainers/party', Name:'Party'},
   {path: '/trainers/gym', Name:'Gyms'},
   {path: '/trainers/badge', Name:'Badge'},
 ]
