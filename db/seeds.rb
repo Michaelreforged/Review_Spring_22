@@ -6,10 +6,10 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Pokemon.destroy_all
 # UserBadge.destroy #??
 Gym.destroy_all
-# User.destroy_all
+User.destroy_all
+Pokemon.destroy_all
 
 60.times do 
   poke = Faker::Games::Pokemon.name
@@ -42,12 +42,47 @@ for g in 0..7 do
   gym.create_badge(name:@gyms_badges[g], gym_id:gym.id)
 end 
 
-User.create(name:"Red",email:"red@pallet.com",password:"Pikachu")
-User.create(name:"Blue",email:"blue@pallet.com",password:"Blastoise")
-User.create(name:"Green",email:"ash@pallet.com",password:"Charizard")
+@r = User.create(name:"Red",email:"red@pallet.com",password:"Pikachu")
+@b = User.create(name:"Blue",email:"blue@pallet.com",password:"Blastoise")
+@g = User.create(name:"Green",email:"ash@pallet.com",password:"Charizard")
+
+@rp = [
+  "Pikachu",
+  "Moltres",
+  "Mewtwo",
+  "Articuno",
+  "Zapdos",
+  "Gengar",
+]
+@bp = [
+  "Alakazam",
+  "Pidgeot",
+  "Rhydon",
+  "Blastoise",
+  "Arcanine",
+  "Venusaur",
+]
+@gp = [
+  "Kangaskhan",
+  "Gengar",
+  "Blastoise",
+  "Victreebel",
+  "Clefable",
+  "Clefable",
+]
+
+for mon in 0..5 do 
+  rp = Pokemon.create(species:@rp[mon], name:@rp[mon],location: Faker::Games::Pokemon.location)
+  gp = Pokemon.create(species:@gp[mon], name:@gp[mon],location: Faker::Games::Pokemon.location)
+  bp = Pokemon.create(species:@bp[mon], name:@bp[mon],location: Faker::Games::Pokemon.location)
+  pp = PartyPokemon.create(user_id:@r.id, pokemon_id:rp.id)
+  PartyPokemon.create(user_id:@g.id, pokemon_id:gp.id)
+  PartyPokemon.create(user_id:@b.id, pokemon_id:bp.id)
+end
 
 p "====================================="
 p "# of Pokemon = #{Pokemon.count}"
 p "# of Gyms = #{Gym.count}"
 p "# of Badges = #{Badge.count}"
 p "# of Users = #{User.count}"
+p "# of Reds Pokemons = #{@r.party_pokemons.size}"
