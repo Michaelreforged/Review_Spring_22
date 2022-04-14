@@ -11,6 +11,8 @@ Rails.application.routes.draw do
     get "/pagepokemon", to: 'pokemons#pagePokemon'
     get "/gyms", to: "gyms#gym_badges"
     get "/trainers", to: "users#trainers"
+    put "/addPoke/:id", to: "party_pokemons#add_pokemon"
+
     resources :badges do
       resources :user_badges
     end

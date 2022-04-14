@@ -29,11 +29,13 @@ ActiveRecord::Schema.define(version: 2022_04_12_203933) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "parties", force: :cascade do |t|
+  create_table "party_pokemons", force: :cascade do |t|
     t.bigint "user_id", null: false
+    t.bigint "pokemon_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_parties_on_user_id"
+    t.index ["pokemon_id"], name: "index_party_pokemons_on_pokemon_id"
+    t.index ["user_id"], name: "index_party_pokemons_on_user_id"
   end
 
   create_table "pokemons", force: :cascade do |t|
@@ -65,7 +67,7 @@ ActiveRecord::Schema.define(version: 2022_04_12_203933) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string "unconfirmed_email"
-    t.string "name"
+    t.string "name", default: "Youngster Joey"
     t.string "nickname"
     t.string "image"
     t.string "email"
@@ -84,7 +86,8 @@ ActiveRecord::Schema.define(version: 2022_04_12_203933) do
   end
 
   add_foreign_key "badges", "gyms"
-  add_foreign_key "parties", "users"
+  add_foreign_key "party_pokemons", "pokemons"
+  add_foreign_key "party_pokemons", "users"
   add_foreign_key "user_badges", "badges"
   add_foreign_key "user_badges", "users"
 end

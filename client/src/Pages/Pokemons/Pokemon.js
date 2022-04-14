@@ -2,11 +2,23 @@ import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import LoadingIndicator from "../../Components/LoadingIndicator";
 import { DataContext } from "../../Providers/DataProvider";
+import {AuthContext} from "../../Providers/AuthProvider"
+import axios from "axios";
 
 const Pokemon = () => {
   const { pokemons, loading } = useContext(DataContext);
   const params = useParams();
   const [pokemon, setPokemon] = useState({});
+
+  const capture = async () => {
+    try {
+      let res = await axios.put(`/api/addPoke/${params.id}`);
+      console.log(res)
+    } catch (error) {
+      console.log("cannot Catch")
+    }
+  };
+  const { user } = useContext(AuthContext);
 
   useEffect(() => {
     if (loading === false) {
@@ -18,16 +30,25 @@ const Pokemon = () => {
   }, [loading]);
 
   const render = () => {
-    if(isNaN(params.id)|| pokemon === undefined ){
-      return(
+    if (isNaN(params.id) || pokemon === undefined) {
+      return (
         <>
-        <h1>Invalid ID</h1>
+          <h1>Invalid ID</h1>
         </>
-      )
+      );
     }
     return (
       <>
         <h1>{pokemon.name}</h1>
+        {user && (
+          <button
+            onClick={() => {
+              capture();
+            }}
+          >
+            Capture
+          </button>
+        )}
       </>
     );
   };
