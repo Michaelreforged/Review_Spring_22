@@ -1,12 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios"
 
 const Trainers = ()=>{
   const [ trainers, setTrainers] = useState([])
 
+  useEffect(()=>{
+    getTrainers()
+  },[])
+
   const getTrainers = async () => {
     try {
-      let res = await axios.get("/api/")
+      let res = await axios.get("/api/trainers")
+      console.log(res)
     } catch (err) {
       
     }

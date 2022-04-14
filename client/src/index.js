@@ -7,15 +7,18 @@ import { BrowserRouter } from 'react-router-dom';
 import DataProvider from './Providers/DataProvider';
 import AuthProvider from './Providers/AuthProvider';
 import {initMiddleware} from 'devise-axios'
+import FetchUser from './Components/FetchUser';
 
 initMiddleware()
 
 ReactDOM.render(
   <BrowserRouter>
     <AuthProvider>
+      <FetchUser>
       <DataProvider>
         <App />
       </DataProvider>
+      </FetchUser>
     </AuthProvider>
   </BrowserRouter>,
   document.getElementById('root')

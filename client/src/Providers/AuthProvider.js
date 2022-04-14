@@ -7,6 +7,7 @@ export const AuthContext = React.createContext();
 const AuthProvider = (props) =>{
 
   const [user, setUser] = useState(null)
+  const [checked, setChecked] = useState(false)
   const nav = useNavigate()
 
   const handleRegister = async (user) =>{
@@ -35,13 +36,14 @@ const AuthProvider = (props) =>{
       await axios.delete('/api/auth/sign_out')
       setUser(null)
       localStorage.removeItem("access-token")
-      nav('/')
     } catch (err) {
       alert("error with Logout")
     }
   }
 
   const providerItems = {
+    checked,
+    setChecked,
     handleRegister,
     handleLogin,
     handleLogout,

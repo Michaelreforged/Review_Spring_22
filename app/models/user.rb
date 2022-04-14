@@ -17,10 +17,10 @@ class User < ActiveRecord::Base
 # FROM users as u
 # where u.id != 1 
 
-  def filtered(id)
+  def self.filtered(id)
     select("u.name, u.id")
     .from("users as u")
-    .where("u.id != ?",id)
+    .where("u.id != ?", id)
   end
 
 end

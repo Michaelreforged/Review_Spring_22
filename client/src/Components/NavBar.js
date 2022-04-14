@@ -35,12 +35,13 @@ export const TrainerNavbar = () =>{
 
   const rightNav = () =>{
     if(user){
-      return(<button onClick={()=>handleLogout()}>LogOut</button>)
+      return(<StyledLinkWithPadding to="/login" onClick={()=>handleLogout()}>LogOut</StyledLinkWithPadding>)
     }
     return(
       <>
-      <StyledLinkWithPadding to="/trainers/login">Login</StyledLinkWithPadding>
-      <StyledLinkWithPadding to="/trainers/register">Register</StyledLinkWithPadding>
+      <StyledLinkWithPadding to="/">Home</StyledLinkWithPadding>
+      <StyledLinkWithPadding to="/login">Login</StyledLinkWithPadding>
+      <StyledLinkWithPadding to="/register">Register</StyledLinkWithPadding>
       </>
     )
   }
@@ -48,7 +49,7 @@ export const TrainerNavbar = () =>{
   return(
     <>
     <div style={{display:'flex',background:"#e21111", justifyContent:"center"}}>
-    {Options()}
+    {user && Options()}
     {rightNav()}
     </div>
     <Outlet/>

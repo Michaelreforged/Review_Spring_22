@@ -4,10 +4,12 @@ import {Navbar, TrainerNavbar} from "./Components/NavBar";
 import About from "./Pages/About";
 import Functions from "./Pages/Functions";
 import Home from "./Pages/Home";
+import Login from "./Pages/Login";
 import NoMatch from "./Pages/NoMatch";
 import PokemonsInfi from "./Pages/Pokemons/PokemonsInfi";
 import PokemonsInfiClick from "./Pages/Pokemons/PokemonsInficlick";
 import PokemonsPage from "./Pages/Pokemons/PokemonsPage";
+import Register from "./Pages/Register";
 import { PokemonRoutes, PokemonRoutes2 } from "./Routes/PokemonRoutes";
 import { TrainerRoutes } from "./Routes/TrainerRoutes";
 
@@ -26,8 +28,11 @@ function App() {
       <Route path='/about' element={<About/>}/>
       <Route path='/*' element={<NoMatch/>}/>
       </Route>
+      
       <Route element={<TrainerNavbar/>}>
         <Route path='/trainers/*' element={<TrainerRoutes/>}/>
+        <Route path='/login' element={<Login/>}/>
+        <Route path='/register' element={<Register/>}/>
       </Route>
     </Routes>
     </>
