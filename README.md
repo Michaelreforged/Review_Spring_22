@@ -100,6 +100,7 @@ Create scope on Notification mode
 Create New Routes
 
     resources :notifications
-    put "read_all", to: "nofications#read_all"
-    put "read_one", to: "nofications#read_one"
+    put "read_all", to: "notifications#read_all"
+    put "read_one", to: "notifications#read_one"
 
+Look at Notifications test page, setup routes, and test
