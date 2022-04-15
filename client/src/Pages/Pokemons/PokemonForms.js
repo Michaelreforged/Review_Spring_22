@@ -7,6 +7,7 @@ const PokeForm = (props) => {
   const nav = useNavigate();
   const params = useParams();
   const [name, setName] = useState("")
+  const [species, setSpecies] = useState("")
   const [location, setLocation] = useState("")
   const {addPokemon,updatedPoke} = useContext(DataContext)
   const [error, setError] = useState(false)
@@ -42,7 +43,7 @@ const PokeForm = (props) => {
       try {
         await axios.post('/api/pokemons',{name,location})
         addPokemon({name,location})
-        nav('/pokemons/')
+        nav('/pokemonspage/')
       } catch (err) {
         console.log(err.response.data.errors)
         setError(true)
@@ -59,6 +60,13 @@ const PokeForm = (props) => {
       value={name}
       placeholder={name}
       onChange={(e)=>{setName(e.target.value)}}
+      />
+      <br/>
+      <p>Species</p>
+      <input
+      value={species}
+      placeholder={species}
+      onChange={(e)=>{setSpecies(e.target.value)}}
       />
       <br/>
       <p>Location</p>

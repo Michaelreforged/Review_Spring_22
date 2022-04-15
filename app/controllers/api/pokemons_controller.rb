@@ -16,6 +16,9 @@ class Api::PokemonsController < ApplicationController
     pokemon = Pokemon.new(poke_params)
     if(pokemon.validate)
       pokemon.save
+      User.has_max_Poke.each do |user|
+        Notification.create(reciever:user, action:"has appeared", notifiable:pokemon)
+      end
       render json: pokemon
     else
       p pokemon.errors.messages.to_hash
@@ -36,8 +39,9 @@ class Api::PokemonsController < ApplicationController
   end
 
   def pagePokemon
-    count = Pokemon.count
-    render json: {pokemon: Pokemon.page(@page).per(@per), count:count, per:@per}
+    pokemon = Pokemon.not_captured
+    count = pokemon.count
+    render json: {pokemon: Kaminari.paginate_array(pokemon).page(@page).per(@per), count:count, per:@per}
   end
 
   private

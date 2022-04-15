@@ -3,6 +3,7 @@ export const routes = [
   {path: '/functions', Name:'Functions'},
   // {path: '/pokemons', Name:'Pokemons'},
   {path: '/pokemonspage', Name:'Pokemons'},
+  {path: '/notifications', Name:'Notification'},
   // {path: '/pokemonsinfi', Name:'Pokemons w/ infi'},
   // {path: '/pokemonsinficlick', Name:'Pokemons w/ infi Click ver.'},
   // {path: '/pokemons2', Name:'Pokemons2'},

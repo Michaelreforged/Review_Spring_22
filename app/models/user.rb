@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   include DeviseTokenAuth::Concerns::User
-  
+  has_many :notifications, foreign_key: :reciever_id
   has_many :user_badges, dependent: :destroy
   has_many :badges, through: :user_badges
   has_many :party_pokemons, dependent: :destroy
@@ -22,4 +22,14 @@ class User < ActiveRecord::Base
     .where("u.id != ?", id)
   end
 
+  def self.has_max_Poke
+    User.find_by_sql('
+    Select distinct u.id, u.name, count(party.user_id) as num_of_poke
+    From users as u
+    left join party_pokemons as party on party.user_id = u.id
+    group by u.id
+    having count(party.user_id) < 6
+    ')
+  end
+  
 end
