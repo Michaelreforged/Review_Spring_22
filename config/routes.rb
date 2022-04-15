@@ -13,13 +13,13 @@ Rails.application.routes.draw do
     get "/trainers", to: "users#trainers"
     put "/addPoke/:id", to: "party_pokemons#add_pokemon"
     get "/myparty", to: "users#my_pokemon"
-    resources :notifications
-    put "read_all", to: "nofications#read_all"
-    put "read_one", to: "nofications#read_one"
     resources :badges do
       resources :user_badges
     end
-
+    
   end
+  resources :notifications
+  put "read_all", to: "notifications#read_all"
+  put "read_one/:id", to: "notifications#read_one"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

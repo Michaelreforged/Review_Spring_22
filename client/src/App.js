@@ -1,6 +1,7 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import {Navbar, TrainerNavbar} from "./Components/NavBar";
+import Notificationstest from "./Components/Notificationstest";
 import About from "./Pages/About";
 import Functions from "./Pages/Functions";
 import Home from "./Pages/Home";
@@ -31,6 +32,7 @@ function App() {
       
       <Route element={<TrainerNavbar/>}>
         <Route path='/trainers/*' element={<TrainerRoutes/>}/>
+        <Route path='/notifications' element={<Notificationstest/>}/>
         <Route path='/login' element={<Login/>}/>
         <Route path='/register' element={<Register/>}/>
       </Route>

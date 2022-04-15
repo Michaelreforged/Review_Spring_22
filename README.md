@@ -81,7 +81,7 @@ Create Notifications Controller
         render json: current_user.notifications.unread
     end
     def read_one
-        read_notif = Notification.find(params([:id]))
+        read_notif = Notification.find(params[:id])
         read_notif.update(read_at:DateTime.now)
         render json: current_user.notifications.unread
     end
