@@ -14,8 +14,12 @@ class Api::PokemonsController < ApplicationController
 
   def create
     pokemon = Pokemon.new(poke_params)
+    
     if(pokemon.validate)
       pokemon.save
+      User.still_need.each do |user|
+        Notification.create(reciever:user, action:"has appeared", notifiable:pokemon)
+      end
       render json: pokemon
     else
       p pokemon.errors.messages.to_hash

@@ -22,4 +22,13 @@ class User < ActiveRecord::Base
     .where("u.id != ?", id)
   end
 
+  def self.still_need
+    User.find_by_sql("
+    SELECT distinct u.id, u.name, COUNT(pp.user_id) as num_of_pokemons
+    FROM users as u
+    LEFT JOIN party_pokemons AS pp on pp.user_id = u.id
+    GROUP BY u.id
+    HAVING COUNT(pp.user_id) < 6")
+  end
+
 end

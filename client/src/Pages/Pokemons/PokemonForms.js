@@ -7,6 +7,7 @@ const PokeForm = (props) => {
   const nav = useNavigate();
   const params = useParams();
   const [name, setName] = useState("")
+  const [species, setSpecies] = useState("")
   const [location, setLocation] = useState("")
   const {addPokemon,updatedPoke} = useContext(DataContext)
   const [error, setError] = useState(false)
@@ -17,6 +18,7 @@ const PokeForm = (props) => {
       try {
         let res = await axios.get(`/api/pokemons/${params.id}`);
         setName(res.data.name)
+        setName(res.data.species)
         setLocation(res.data.location)
       } catch (err) {
         
@@ -32,7 +34,7 @@ const PokeForm = (props) => {
     e.preventDefault()
     if(params.id){
       try{
-        await axios.put(`/api/pokemons/${params.id}`,{name,location})
+        await axios.put(`/api/pokemons/${params.id}`,{name,location,species})
         updatedPoke()
         nav(`/pokemons/${params.id}`)
       }catch(err){
@@ -40,7 +42,7 @@ const PokeForm = (props) => {
       }
     }else{
       try {
-        await axios.post('/api/pokemons',{name,location})
+        await axios.post('/api/pokemons',{name,location,species})
         addPokemon({name,location})
         nav('/pokemons/')
       } catch (err) {
@@ -59,6 +61,13 @@ const PokeForm = (props) => {
       value={name}
       placeholder={name}
       onChange={(e)=>{setName(e.target.value)}}
+      />
+      <br/>
+      <p>Species</p>
+      <input
+      value={species}
+      placeholder={species}
+      onChange={(e)=>{setSpecies(e.target.value)}}
       />
       <br/>
       <p>Location</p>
