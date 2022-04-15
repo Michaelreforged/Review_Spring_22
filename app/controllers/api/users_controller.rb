@@ -4,5 +4,8 @@ class Api::UsersController < ApplicationController
     render json: User.filtered(current_user.id)
   end
 
+  def my_pokemon
+    render json: current_user.pokemons
+  end
   
 end
