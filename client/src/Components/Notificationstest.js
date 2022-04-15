@@ -1,9 +1,10 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Notificationstest = () => {
   const [notif, setNotif] = useState([])
-
+  const nav = useNavigate()
   useEffect(()=>{
     getNotif()
   },[])
@@ -20,7 +21,7 @@ const Notificationstest = () => {
 
   const readAll = async() =>{
     try {
-      let res = await axios.put('/read_all')
+      await axios.put('/read_all')
       setNotif([])
     } catch (err) {
       
@@ -28,7 +29,7 @@ const Notificationstest = () => {
   }
   const readOne = async(id) =>{
     try {
-      let res = await axios.put(`/read_one/${id}`)
+      await axios.put(`/read_one/${id}`)
       setNotif(notif.filter((note)=>note.id != id))
     } catch (err) {
       
@@ -38,7 +39,8 @@ const Notificationstest = () => {
   const renderNotif = () =>{
     return notif.map((note) =>(
       <div key={note.id}>
-        {note.id}
+        <p> {note.notifiable_type} {note.action}</p>
+        <button onClick={()=>{nav(`/pokemons/${note.notifiable_id}`)}}>Got to {note.notifiable_type}</button>
         <button onClick={()=>{readOne(note.id)}} >Read</button>
       </div>
     ))
