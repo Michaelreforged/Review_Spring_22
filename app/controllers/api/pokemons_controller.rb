@@ -36,8 +36,9 @@ class Api::PokemonsController < ApplicationController
   end
 
   def pagePokemon
-    count = Pokemon.count
-    render json: {pokemon: Pokemon.page(@page).per(@per), count:count, per:@per}
+    pokemon = Pokemon.not_captured
+    count = pokemon.count
+    render json: {pokemon: Kaminari.paginate_array(pokemon).page(@page).per(@per), count:count, per:@per}
   end
 
   private

@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import LoadingIndicator from "../../Components/LoadingIndicator";
 import { DataContext } from "../../Providers/DataProvider";
 import {AuthContext} from "../../Providers/AuthProvider"
@@ -9,11 +9,13 @@ const Pokemon = () => {
   const { pokemons, loading } = useContext(DataContext);
   const params = useParams();
   const [pokemon, setPokemon] = useState({});
+  const nav = useNavigate()
 
   const capture = async () => {
     try {
       let res = await axios.put(`/api/addPoke/${params.id}`);
       console.log(res)
+      nav("/pokemonspage")
     } catch (error) {
       console.log("cannot Catch")
     }
