@@ -66,3 +66,9 @@ Limit Notifications to only users with less than 6 pokemons
     LEFT JOIN party_pokemons AS pp on pp.user_id = u.id
     GROUP BY u.id
     HAVING COUNT(pp.user_id) < 6
+
+In Controller update
+    User.still_need.each do |user|
+      Notification.create(reciever:user, action:"has appeared", notifiable:pokemon)
+    end
+
