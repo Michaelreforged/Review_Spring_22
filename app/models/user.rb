@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   include DeviseTokenAuth::Concerns::User
-  
+  has_many :notifications, foreign_key: :reciever_id
   has_many :user_badges, dependent: :destroy
   has_many :badges, through: :user_badges
   has_many :party_pokemons, dependent: :destroy
