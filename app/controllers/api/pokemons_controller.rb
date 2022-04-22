@@ -6,6 +6,10 @@ class Api::PokemonsController < ApplicationController
   def index
     render json: Pokemon.all
   end
+
+  def sample
+    render json: Pokemon.all.sample(6)
+  end
  
 
   def show

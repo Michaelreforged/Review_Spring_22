@@ -28,7 +28,7 @@ function App() {
       <Route path='/pokemonspage' element={<PokemonsPage/>}/>
       <Route path='/pokemonsinficlick' element={<PokemonsInfiClick/>}/>
       <Route path='/pokemons2/*' element={<PokemonRoutes2/>}/>
-      <Route path='/' element={<Normalize/>}/>
+      <Route path='/normalize' element={<Normalize/>}/>
       <Route path='/about' element={<About/>}/>
       <Route path='/*' element={<NoMatch/>}/>
       </Route>
