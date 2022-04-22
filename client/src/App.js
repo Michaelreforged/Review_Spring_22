@@ -6,6 +6,7 @@ import Functions from "./Pages/Functions";
 import Home from "./Pages/Home";
 import Login from "./Pages/Login";
 import NoMatch from "./Pages/NoMatch";
+import Normalize from "./Pages/Normailize";
 import NotificationTest from "./Pages/Notificationstest";
 import PokemonsInfi from "./Pages/Pokemons/PokemonsInfi";
 import PokemonsInfiClick from "./Pages/Pokemons/PokemonsInficlick";
@@ -27,6 +28,7 @@ function App() {
       <Route path='/pokemonspage' element={<PokemonsPage/>}/>
       <Route path='/pokemonsinficlick' element={<PokemonsInfiClick/>}/>
       <Route path='/pokemons2/*' element={<PokemonRoutes2/>}/>
+      <Route path='/' element={<Normalize/>}/>
       <Route path='/about' element={<About/>}/>
       <Route path='/*' element={<NoMatch/>}/>
       </Route>

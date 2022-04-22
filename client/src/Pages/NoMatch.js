@@ -1,9 +1,11 @@
 import React from "react"
-import {useLocation} from "react-router"
+import {useLocation, useParams} from "react-router"
 
 const NoMatch = () =>{
   const loc = useLocation();
   console.log(loc)
+  const params = useParams()
+  console.log(params)
 
   return(
     <div>

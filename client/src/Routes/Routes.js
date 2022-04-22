@@ -8,6 +8,7 @@ export const routes = [
   // {path: '/pokemonsinficlick', Name:'Pokemons w/ infi Click ver.'},
   // {path: '/pokemons2', Name:'Pokemons2'},
   {path: '/trainers', Name:'Trainer'},
+  {path: '/normalize', Name:'Normalize'},
   {path: '/about', Name:'About'},
 ]
 
