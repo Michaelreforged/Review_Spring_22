@@ -8,4 +8,8 @@ class Api::UsersController < ApplicationController
     render json: current_user.pokemons
   end
   
+  def trainerspokes
+    render json: User.trainerpokemons
+  end
+
 end

@@ -4,6 +4,7 @@ export const routes = [
   // {path: '/pokemons', Name:'Pokemons'},
   {path: '/pokemonspage', Name:'Pokemons'},
   {path: '/notifications', Name:'Notification'},
+  {path: '/normalize', Name:'Normalize'},
   // {path: '/pokemonsinfi', Name:'Pokemons w/ infi'},
   // {path: '/pokemonsinficlick', Name:'Pokemons w/ infi Click ver.'},
   // {path: '/pokemons2', Name:'Pokemons2'},

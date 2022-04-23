@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     resources :notifications
     put "/read_one/:id", to:"notifications#read_one"
     put "/read_all/", to:"notifications#read_all"
+    get "/trainerpokemons", to:"users#trainerspokes"
 
     resources :badges do
       resources :user_badges
