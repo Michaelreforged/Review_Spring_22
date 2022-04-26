@@ -36,8 +36,8 @@ class User < ActiveRecord::Base
     User.find_by_sql('
     SELECT u.id, u.name, party.pokemon_id, mon.species, mon.name as pokemon_name
     FROM users as u
-    LEFT JOIN party_pokemons AS party ON u.id = party.user_id
-    LEFT JOIN pokemons as mon on party.pokemon_id = mon.id
+    INNER JOIN party_pokemons AS party ON u.id = party.user_id
+    INNER JOIN pokemons as mon on party.pokemon_id = mon.id
     ORDER BY u.id
     ')
   end

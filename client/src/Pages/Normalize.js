@@ -11,30 +11,46 @@ const Normalize = () =>{
 
   const getData = async () =>{
     let res = await axios.get('/api/trainerpokemons')
-    let formatted = format(res.data)
-    const data = await Promise.all(formatted.map(async (t)=>{
-      return await Promise.all(t.party.map(async (p) =>{
-        return{
-          ...p,
-          info: await axios.get(`https://pokeapi.co/api/v2/pokemon-species/${p.species.toLowerCase()}/`)
-        }
-      }))
+    // let formatted = format(res.data)
+    // const data = await Promise.all(formatted.map(async(t)=>{
+    //   let party = await Promise.all(t.party.map( async (p)=>{
+    //     return{
+    //       ...p,
+    //       info: await getSpeciesInfo(p.species.toLowerCase())
+    //     }
+    //   }))
+    //   return {...t, party}
+    // }))
+    // console.log(data)
+    let data = await Promise.all(res.data.map(async (poke)=>{
+      return getSpeciesInfo(poke.species.toLowerCase())
     }))
-    console.log(data)
-    setNormal(format(res.data))
+    let newData = res.data.map((poke, ind)=>{
+      return{...poke, infe:data[ind]}
+    })    
+    console.log(format(newData))
+    setNormal(format(newData))
+  }
+
+
+
+  const getSpeciesInfo = async (species) =>{
+    let res = await axios.get(`https://pokeapi.co/api/v2/pokemon-species/${species}/`)
+    return {color: res.data.color.name, evolution:res.data.evolves_from_species}
   }
 
   const format = (info) => {
     let trainerID = info.map((t)=>t.id)
     let uniqueTID = [...new Set(trainerID)] 
-    uniqueTID.pop()
     return uniqueTID.map((t)=>{
       let pokemons = info.filter(p => p.id === t)
       let {id, name} = pokemons[0]
       let party = pokemons.map((p)=>{
         let species = p.species
         let name = p.pokemon_name
-        return{species, name}
+        let data = p.infe
+        console.log(p)
+        return{species, name,info:data}
       })
       return {id,trainer:name, party}
     })
@@ -42,7 +58,6 @@ const Normalize = () =>{
  // data > trainer party  {species}
 
   const renderpoke = (party) =>{
-    console.log(party[0].color)
     return party.map((poke)=>(
       <Pokediv key={Math.random()}>
         <p>{poke.species}</p>
